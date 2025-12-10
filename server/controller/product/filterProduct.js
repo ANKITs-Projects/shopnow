@@ -9,7 +9,8 @@ const filterProductController = async(req,res)=>{
                 "$in" : categoryList
             }
         })
-
+      // 🚫 Stop Vercel + browser from caching the response
+        res.set("Cache-Control", "no-store");
         res.json({
             data : product,
             message : "product",
