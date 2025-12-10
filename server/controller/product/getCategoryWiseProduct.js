@@ -5,6 +5,8 @@ const getCategoryWiseProduct = async(req,res)=>{
         const { category } = req?.body || req?.query
         const product = await productModel.find({ category })
 
+        // 🚫 Stop Vercel + browser from caching the response
+        res.set("Cache-Control", "no-store");
         res.json({
             data : product,
             message : "Product",
