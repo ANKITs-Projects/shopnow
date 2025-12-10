@@ -7,7 +7,8 @@ const countAddToCartProduct = async(req,res)=>{
         const count = await addToCartModel.countDocuments({
             userId : userId
         })
-
+// 🚫 Stop Vercel + browser from caching the response
+        res.set("Cache-Control", "no-store");
         res.json({
             data : {
                 count : count
