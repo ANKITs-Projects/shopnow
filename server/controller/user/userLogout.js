@@ -1,7 +1,8 @@
 async function userLogout(req,res){
     try{
         res.clearCookie("token")
-
+// 🚫 Stop Vercel + browser from caching the response
+        res.set("Cache-Control", "no-store");
         res.json({
             message : "Logged out successfully",
             error : false,
