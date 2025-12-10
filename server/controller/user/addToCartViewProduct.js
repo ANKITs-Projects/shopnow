@@ -7,7 +7,8 @@ const addToCartViewProduct = async(req,res)=>{
         const allProduct = await addToCartModel.find({
             userId : currentUser
         }).populate("productId")
-
+// 🚫 Stop Vercel + browser from caching the response
+        res.set("Cache-Control", "no-store");
         res.json({
             data : allProduct,
             success : true,
