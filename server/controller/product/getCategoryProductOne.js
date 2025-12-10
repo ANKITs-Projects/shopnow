@@ -18,7 +18,8 @@ const getCategoryProduct = async(req,res)=>{
             }
         }
 
-
+// 🚫 Stop Vercel + browser from caching the response
+        res.set("Cache-Control", "no-store");
         res.json({
             message : "category product",
             data : productByCategory,
