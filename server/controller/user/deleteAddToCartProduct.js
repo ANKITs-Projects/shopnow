@@ -6,7 +6,8 @@ const deleteAddToCartProduct = async(req,res)=>{
         const addToCartProductId = req.body._id
 
         const deleteProduct = await addToCartModel.deleteOne({ _id : addToCartProductId})
-
+// 🚫 Stop Vercel + browser from caching the response
+        res.set("Cache-Control", "no-store");
         res.json({
             message : "Product Deleted From Cart",
             error : false,
