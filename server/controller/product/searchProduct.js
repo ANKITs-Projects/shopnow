@@ -18,6 +18,8 @@ const searchProduct = async(req,res)=>{
         })
 
 
+        // 🚫 Stop Vercel + browser from caching the response
+        res.set("Cache-Control", "no-store");
         res.json({
             data  : product ,
             message : "Search Product list",
