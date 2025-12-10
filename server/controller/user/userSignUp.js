@@ -39,7 +39,8 @@ async function userSignUpController(req,res){
 
         const userData = new userModel(payload)
         const saveUser = await userData.save()
-
+// 🚫 Stop Vercel + browser from caching the response
+        res.set("Cache-Control", "no-store");
         res.status(201).json({
             data : saveUser,
             success : true,
