@@ -26,7 +26,8 @@ const addToCartController = async(req,res)=>{
         const newAddToCart = new addToCartModel(payload)
         const saveProduct = await newAddToCart.save()
 
-
+// 🚫 Stop Vercel + browser from caching the response
+        res.set("Cache-Control", "no-store");
         return res.json({
             data : saveProduct,
             message : "Product Added in Cart",
