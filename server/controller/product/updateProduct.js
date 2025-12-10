@@ -11,7 +11,8 @@ async function updateProductController(req,res){
         const { _id, ...resBody} = req.body
 
         const updateProduct = await productModel.findByIdAndUpdate(_id,resBody)
-        
+        // 🚫 Stop Vercel + browser from caching the response
+        res.set("Cache-Control", "no-store");
         res.json({
             message : "Product update successfully",
             data : updateProduct,
