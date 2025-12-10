@@ -20,7 +20,8 @@ async function updateUser(req,res){
 
         const updateUser = await userModel.findByIdAndUpdate(userId,payload)
 
-        
+        // 🚫 Stop Vercel + browser from caching the response
+        res.set("Cache-Control", "no-store");
         res.json({
             data : updateUser,
             message : "User Updated",
