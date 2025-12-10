@@ -34,7 +34,8 @@ async function userSignInController(req,res){
             httpOnly : true,
             secure : true
         }
-
+// 🚫 Stop Vercel + browser from caching the response
+        res.set("Cache-Control", "no-store");
         res.cookie("token",token,tokenOption).status(200).json({
             message : "Login successfully",
             data : token,
