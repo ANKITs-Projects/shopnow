@@ -11,7 +11,8 @@ async function UploadProductController(req,res){
     
         const uploadProduct = new productModel(req.body)
         const saveProduct = await uploadProduct.save()
-
+// 🚫 Stop Vercel + browser from caching the response
+        res.set("Cache-Control", "no-store");
         res.status(201).json({
             message : "Product upload successfully",
             error : false,
