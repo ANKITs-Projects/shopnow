@@ -10,7 +10,8 @@ const updateAddToCartProduct = async(req,res)=>{
         const updateProduct = await addToCartModel.updateOne({_id : addToCartProductId},{
             ...(qty && {quantity : qty})
         })
-
+// 🚫 Stop Vercel + browser from caching the response
+        res.set("Cache-Control", "no-store");
         res.json({
             message : "Product Updated",
             data : updateProduct,
