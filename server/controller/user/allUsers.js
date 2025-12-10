@@ -5,7 +5,8 @@ async function allUsers(req,res){
         console.log("userid all Users",req.userId)
 
         const allUsers = await userModel.find()
-        
+        // 🚫 Stop Vercel + browser from caching the response
+        res.set("Cache-Control", "no-store");
         res.json({
             message : "All User ",
             data : allUsers,
