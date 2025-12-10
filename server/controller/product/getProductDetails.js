@@ -6,6 +6,8 @@ const getProductDetails = async(req,res)=>{
 
         const product = await productModel.findById(productId)
 
+        // 🚫 Stop Vercel + browser from caching the response
+        res.set("Cache-Control", "no-store");
         res.json({
             data : product,
             message : "Ok",
