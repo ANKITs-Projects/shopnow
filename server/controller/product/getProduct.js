@@ -3,7 +3,8 @@ const productModel = require("../../models/productModel")
 const getProductController = async(req,res)=>{
     try{
         const allProduct = await productModel.find().sort({ createdAt : -1 })
-
+        // 🚫 Stop Vercel + browser from caching the response
+        res.set("Cache-Control", "no-store");
         res.json({
             message : "All Product",
             success : true,
