@@ -4,7 +4,8 @@ async function userDetailsController(req,res){
     try{
         console.log("userId",req.userId)
         const user = await userModel.findById(req.userId)
-
+// 🚫 Stop Vercel + browser from caching the response
+        res.set("Cache-Control", "no-store");
         res.status(200).json({
             data : user,
             error : false,
